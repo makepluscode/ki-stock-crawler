@@ -30,8 +30,8 @@
 
 1. 저장소 클론
 ```bash
-git clone https://github.com/your-username/korea-investment-crawler.git
-cd korea-investment-crawler
+git clone https://github.com/your-username/ki-stock-crawler.git
+cd ki-stock-crawler
 ```
 
 2. 가상환경 생성 및 활성화
