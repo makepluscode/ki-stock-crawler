@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# 타임존 설정
+sudo timedatectl set-timezone Asia/Seoul
+echo "Timezone set to Asia/Seoul"
+
 # 스크립트 경로 가져오기
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
