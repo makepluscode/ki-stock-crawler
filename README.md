@@ -51,22 +51,29 @@ cp .env.example .env
 # .env 파일을 열어 API_KEY와 API_SECRET 입력
 ```
 
+### Discord 알림 설정
+
+1. Discord 웹훅 URL 얻기
+   - Discord 서버 설정 → 연동 → 웹후크
+   - '새 웹후크' 생성
+   - 웹후크 이름 설정 (예: "Stock Bot")
+   - 채널 선택
+   - '웹후크 URL 복사' 클릭
+
+2. 환경 변수에 웹훅 URL 추가
+```bash
+# .env 파일에 추가
+DISCORD_WEBHOOK_URL=your_discord_webhook_url_here
+```
+
+3. 알림 기능
+   - 거래대금 상위 10종목 정보
+   - CSV 파일 자동 첨부
+   - 에러 발생 시 자동 알림
+   - 매 시간 정각 실행 결과 통보
+
 ### 실행 방법
 
-1. 실시간 데이터 수집
-```bash
-python app.py --mode realtime
-```
-
-2. 일별 데이터 수집
-```bash
-python app.py --mode daily
-```
-
-3. 특정 종목 모니터링
-```bash
-python app.py --mode monitor --code 005930
-```
 
 ## 데이터 형식
 
@@ -89,11 +96,12 @@ korea-investment-crawler/
 │   ├── __init__.py
 │   ├── api.py            # API 연동 모듈
 │   └── utils.py          # 유틸리티 함수
-├── data/                 # 데이터 저장 디렉토리
-├── requirements.txt      # 의존성 패키지 목록
-├── .env.example         # 환경 변수 예시 파일
-├── .gitignore           # Git 무시 파일 목록
-└── README.md            # 프로젝트 문서
+├── discord.py           # Discord 알림 모듈
+├── data/                # 데이터 저장 디렉토리
+├── requirements.txt     # 의존성 패키지 목록
+├── .env.example        # 환경 변수 예시 파일
+├── .gitignore          # Git 무시 파일 목록
+└── README.md           # 프로젝트 문서
 ```
 
 ## 주의사항
