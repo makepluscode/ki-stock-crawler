@@ -16,7 +16,11 @@ crontab -l > "$TEMP_CRON" 2>/dev/null
 # 기존 stock data 수집 작업이 있다면 제거
 sed -i '/stock_data.*run.sh/d' "$TEMP_CRON"
 
-# 새로운 cron 작업 추가 (평일 15:40에 실행)
+# 새로운 cron 작업 추가
+# 평일(월-금) 장중 시간대(9시-16시)에 매 시간 정각에 실행
+echo "0 9-15 * * 1-5 $SCRIPT_DIR/run.sh" >> "$TEMP_CRON"
+
+# 장 마감 시간에 한 번 더 실행 (15:40)
 echo "40 15 * * 1-5 $SCRIPT_DIR/run.sh" >> "$TEMP_CRON"
 
 # 새로운 crontab 설정 적용
